@@ -58,7 +58,50 @@ public class PhoneBookManagerTest {
      * Test of addPhoneInfo method, of class PhoneBookManager.
      */
     
+    /*
+    add phone information with name and number
+    */
+    @Test
+    public void testAddPhoneInfo() {
+        System.out.println("addPhoneInfo");
+        String name = "NAME1";    // enter name as NAME1
+        String phone = "75757542";  // enter telephone number
+        PhoneBookManager manager = PhoneBookManager.createManagerInst();// create instance for java class PhoneBookManager
+        boolean expResult = true; // true value represents when contact information is saved successfully
+        boolean result = manager.addPhoneInfo(name, phone); // add contact information
+        assertEquals(expResult, result); //check contact information is saved into the list
+        System.out.println("Contact information has been added successfully");
+    }
     
+    /*
+    add phone information with empty name
+    */
+    @Test
+    public void testAddPhoneInfoJustNameAndNumberWithEmptyName() {
+        System.out.println("addPhoneInfo with empty name");
+        String name = ""; // enter empty name
+        String phone = "7896666"; // enter telphone number
+        PhoneBookManager manager = PhoneBookManager.createManagerInst();// create instance for java class PhoneBookManager
+        boolean expResult = false; // expected value is false as contact cannot be saved with empty name
+        boolean result = manager.addPhoneInfo(name, phone); // add contact infomation
+        assertEquals(expResult, result);// check contact infomartion is saved or not
+        System.out.println("Contact information cannot be saved with empty name");
+    }
+    
+    @Test
+    /*
+    add phone information with empty number
+    */
+    public void testAddPhoneInfoJustNameAndNumberWithEmptyNumber() {
+        System.out.println("addPhoneInfo with empty number");
+        String name = "Name2"; // enter name as NAME2
+        String phone = ""; // enter empty telephone number
+        PhoneBookManager manager = PhoneBookManager.createManagerInst(); // create instance for java class PhoneBookManager
+        boolean expResult = false; //expected value is false as contact cannot be saved with empty number
+        boolean result = manager.addPhoneInfo(name, phone); // add contact information
+        assertEquals(expResult, result); // check contact information is saved into the list
+        System.out.println("Contact information cannot be saved with empty number");
+    }    
 
     
 }
